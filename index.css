@@ -1,0 +1,23 @@
+﻿body {
+    background-color: #1E1E1E;
+    color: lightgray;
+    font-family: "Segoe UI";
+    font-size: 14px;
+}
+
+table {
+    width: 100%;
+}
+
+table tr {
+    height: 32px;
+}
+
+table th, table tr:not(:last-child) td {
+    border-bottom: 1px solid black;
+}
+
+table tbody tr:hover {
+    background-color: #2E2E2E;
+    cursor: pointer;
+}
