@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31410.357
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Domain", "1.Domain", "{5E539F11-1A48-4DC1-BF02-5BEED23C9B9A}"
 EndProject
@@ -24,6 +24,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Biblioteca.Web", "Bibliotec
 		index.css = index.css
 		index.html = index.html
 		index.js = index.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{E0C5AAF4-0168-46F4-8D1A-048F6EC19E69}"
+	ProjectSection(SolutionItems) = preProject
+		ScriptBanco.sql = ScriptBanco.sql
 	EndProjectSection
 EndProject
 Global

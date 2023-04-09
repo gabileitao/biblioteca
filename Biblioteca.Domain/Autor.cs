@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Biblioteca.Domain.Models {
     public class Autor {
 
-        public int Id;
+        public Guid Id;
         public string Nome;
         public DateTime Nascimento;
         public DateTime? Falecimento;

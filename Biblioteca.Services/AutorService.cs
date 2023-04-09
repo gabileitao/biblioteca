@@ -15,5 +15,34 @@ namespace Biblioteca.Services {
             return AutorRepository.FindAll();
         }
 
+        public Autor[] FindPerName(string name) {
+
+            return AutorRepository.FindPerName(name);
+        }
+
+        public Autor AddAuthor(Autor autor) {
+            
+            return AutorRepository.AddAuthor(autor); ;
+        }
+
+        public string[] IsValidAuthor(Autor autor) { 
+            var erros = new List<string>();
+
+            if(autor.Nome == null || autor.Nome == "") { 
+                erros.Add("Nome do autor não pode estar vazio.");
+            }
+
+            if (autor.Nascimento == null) {
+                erros.Add("Nascimento não pode ser nulo.");
+            }
+
+            if ((autor.Nascimento != null || autor.Falecimento != null) && autor.Nascimento >= autor.Falecimento) {
+                erros.Add("Data de nascimento não pode ser maior ou igual a data de falecimento.");
+            }
+
+            return erros.ToArray();
+
+        }
+
     }
 }

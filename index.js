@@ -24,3 +24,32 @@
     document.querySelector("table#autores tbody").insertAdjacentHTML("beforeend", rows.join(""));
 
 })();
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+    document.querySelector("input#search").oninput = async e => {
+        const response = await fetch(`https://localhost:44383/autor?name=${e.target.value}`);
+        const autores = await response.json();
+
+        const rows = autores.map(a => {
+            return `
+            <tr>
+                <td>${a.Id}</td>
+                <td>${a.Nome}</td>
+                <td>${a.Nascimento}</td>
+                <td>${a.Falecimento ?? "---"}</td>
+                <td>
+                    <button>Editar</button>
+                </td>
+                <td>
+                    <button>Remover</button>
+                </td>
+            </tr>
+        `;
+        });
+
+        document.querySelector("table#autores tbody").innerHTML="";
+        document.querySelector("table#autores tbody").insertAdjacentHTML("beforeend", rows.join(""));
+    };
+
+});
