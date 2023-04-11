@@ -25,16 +25,57 @@ namespace Biblioteca.Api.Controllers {
 
         [HttpPost, Route("autor")]
         public IHttpActionResult PostAuthor([FromBody] Autor autor) {
+
             try {
                 var erros = AutorService.IsValidAuthor(autor);
                 if (erros.Length == 0) {
-                    Autor autorResposta = AutorService.AddAuthor(autor);
-                    return Ok(autorResposta);
-                } else { 
+                    if (!AutorService.AuthorExists(autor.Id)) {
+                        AutorService.AddAuthor(autor);
+                        return Ok(autor);
+                    } else {
+                        return BadRequest("Autor já existe com esse id");
+                    }
+                } else {
                     return BadRequest(string.Join(", ", erros));
                 }
+            } catch (Exception e) {
+                return InternalServerError(e);
+            }
 
-            } catch(Exception e) {
+        }
+
+        [HttpPut, Route("autor")]
+        public IHttpActionResult PutAuthor([FromBody] Autor autor) {
+
+            try {
+                var erros = AutorService.IsValidAuthor(autor);
+                if (erros.Length == 0) {
+                    if (AutorService.AuthorExists(autor.Id)) {
+                        AutorService.AttAuthor(autor);
+                        return Ok(autor);
+                    } else {
+                        return NotFound();
+                    }
+                } else {
+                    return BadRequest(string.Join(", ", erros));
+                }
+            } catch (Exception e) {
+                return InternalServerError(e);
+            }
+
+        }
+
+        [HttpDelete, Route("autor")]
+        public IHttpActionResult DeleteAuthor([FromBody] Autor autor) {
+
+            try {
+                if (AutorService.AuthorExists(autor.Id)) {
+                    AutorService.DeleteAuthor(autor);
+                    return Ok(autor);
+                } else {
+                    return NotFound();
+                }
+            } catch (Exception e) {
                 return InternalServerError(e);
             }
 

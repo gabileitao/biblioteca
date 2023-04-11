@@ -20,15 +20,35 @@ namespace Biblioteca.Services {
             return AutorRepository.FindPerName(name);
         }
 
+        public Autor[] FindPerId(Guid id) {
+
+            return AutorRepository.FindPerId(id);
+        }
+
+        public bool AuthorExists(Guid id) {
+
+            return AutorRepository.AuthorExists(id);
+        }
+
         public Autor AddAuthor(Autor autor) {
-            
+
             return AutorRepository.AddAuthor(autor); ;
         }
 
-        public string[] IsValidAuthor(Autor autor) { 
+        public Autor AttAuthor(Autor autor) {
+
+            return AutorRepository.AttAuthor(autor);
+        }
+
+        public Autor DeleteAuthor(Autor autor) {
+
+            return AutorRepository.RemoveAuthor(autor);
+        }
+
+        public string[] IsValidAuthor(Autor autor) {
             var erros = new List<string>();
 
-            if(autor.Nome == null || autor.Nome == "") { 
+            if (autor.Nome == null || autor.Nome == "") {
                 erros.Add("Nome do autor não pode estar vazio.");
             }
 

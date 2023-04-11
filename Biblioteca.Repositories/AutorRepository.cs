@@ -14,7 +14,7 @@ namespace Biblioteca.Repositories {
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
 
-            string query = "select * from autor";
+            string query = "select * from autor where ativo = 1";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -48,7 +48,7 @@ namespace Biblioteca.Repositories {
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
 
-            string query = $"select * from autor where nome like '%{name}%'";
+            string query = $"select * from autor where nome like '%{name}%' and ativo = 1";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -74,6 +74,47 @@ namespace Biblioteca.Repositories {
             return autores.ToArray();
         }
 
+        public Autor[] FindPerId(Guid id) {
+
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+
+            string query = $"select * from autor where id = '{id}' and ativo = 1";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            SqlDataReader reader = command.ExecuteReader();
+            List<Autor> autores = new List<Autor>();
+
+            while (reader.Read()) {
+                Autor autor = new Autor();
+                autor.Id = reader.GetGuid(0);
+                autor.Nome = reader.GetString(1);
+                autor.Nascimento = reader.GetDateTime(2);
+                if (!reader.IsDBNull(reader.GetOrdinal("falecimento"))) {
+                    autor.Falecimento = reader.GetDateTime(reader.GetOrdinal("falecimento"));
+                }
+                autores.Add(autor);
+            }
+
+            connection.Close();
+
+            return autores.ToArray();
+        }
+
+        public bool AuthorExists(Guid id) {
+
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+
+            string query = $"select count(*) from autor where id = '{id}' and ativo = 1";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            int count = (int)command.ExecuteScalar(); //retorna a primera linha da primeira coluna
+            return count > 0;
+        }
+
         //Post - inserir dados
 
         public Autor AddAuthor(Autor autor) {
@@ -85,20 +126,45 @@ namespace Biblioteca.Repositories {
 
             var falecimento = autor.Falecimento != null ? $"'{autor.Falecimento}'" : "null";
 
-            string query = $"insert into autor values ('{autor.Id}', '{autor.Nome}', '{autor.Nascimento}', {falecimento})";
+            string query = $"insert into autor values ('{autor.Id}', '{autor.Nome}', '{autor.Nascimento}', {falecimento}, 1)";
 
             SqlCommand command = new SqlCommand(query, connection);
 
             int affectedLines = command.ExecuteNonQuery();
 
-            //if(affectedLines > 0) {
-            //    return autor;
-            //}
-
             return autor;
         }
 
         //Put - atualizar dados
+        public Autor AttAuthor(Autor autor) {
+
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+
+            var falecimento = autor.Falecimento != null ? $"'{autor.Falecimento:yyyy-MM-ddTHH:mm:ss}'" : "null";
+
+            string query = $"update autor set nome = '{autor.Nome}', " +
+                $"nascimento = '{autor.Nascimento:yyyy-MM-ddTHH:mm:ss}', " +
+                $"falecimento = {falecimento} where id = '{autor.Id}'";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            int affectedLines = command.ExecuteNonQuery();
+
+            return autor;
+        }
+
+        public Autor RemoveAuthor(Autor autor) {
+
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+
+            string query = $"update autor set ativo = 0 where id = '{autor.Id}'";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            int affectedLines = command.ExecuteNonQuery();
+
+            return autor;
+        }
 
     }
 }

@@ -11,6 +11,7 @@ create table usuario (
 	login varchar(50) not null,
 	senha varchar(50) not null,
 	nascimento date not null,
+	ativo bit not null default 1,
 	constraint pk_usuario primary key (id)
 );
 
@@ -21,6 +22,7 @@ create table locatario (
 	email varchar(255) not null,
 	nascimento date not null,
 	telefone varchar(255),
+	ativo bit not null default 1,
 	constraint pk_locatario primary key (id)
 );
 
@@ -28,6 +30,7 @@ create table editora (
 	id uniqueidentifier not null,
 	nome varchar(255) not null,
 	cnpj varchar(18) not null,
+	ativo bit not null default 1,
 	constraint pk_editora primary key (id)
 );
 
@@ -36,6 +39,7 @@ create table autor (
 	nome varchar(255) not null,
 	nascimento date not null,
 	falecimento date,
+	ativo bit not null default 1,
 	constraint pk_autor primary key (id)
 );
 
@@ -46,6 +50,7 @@ create table obra (
 	genero varchar(255) not null,
 	idautor uniqueidentifier not null,
 	ideditora uniqueidentifier not null,
+	ativo bit not null default 1,
 	constraint pk_obra primary key (id),
 	constraint fk_obra_autor foreign key (idautor) references autor(id),
 	constraint fk_obra_editora foreign key (ideditora) references editora(id)
@@ -55,7 +60,8 @@ create table livro (
 	id uniqueidentifier not null,
 	barcode varchar(max),
 	idobra uniqueidentifier not null,
-	doacao datetime not null,	
+	doacao datetime not null,
+	ativo bit not null default 1,
 	constraint pk_livro primary key (id),
 	constraint fk_livro_obra foreign key (idobra) references obra(id)
 );
@@ -72,14 +78,14 @@ create table movimentacao (
 	constraint fk_movimentacao_usuario foreign key (idusuario) references usuario(id)
 );
 
-INSERT INTO autor VALUES 
+INSERT INTO autor (id, nome, nascimento, falecimento) VALUES 
 ('6FFED3CA-6D5A-4060-BA72-C1855ED49922', 'Howard Philips Lovecraft','1890-08-20','1937-03-15'),
 ('2C522697-BC20-4FC2-AC7C-37A590ECDE01', 'Edgar Allan Poe','1809-01-19','1849-10-07'),
 ('4641F492-BEB2-472B-9BA7-93FA1DD8DF96', 'Patrícia Cabot', '1967-02-01', null),
 ('458459CF-A79C-49B0-A33E-EF89CF62045F', 'V. E. Schwab', '1987-07-07', null),
 ('8A2529E8-73D9-4595-BEE7-AF2B288E148E', 'Holly Black', '1971-11-10', null);
 
-INSERT INTO editora VALUES 
+INSERT INTO editora (id, nome, cnpj) VALUES 
 ('51B72101-DA30-4D8C-9C63-BEB5F13D0228', 'Darkside', '17.285.159/0001-00'),
 ('2D95A6B8-32C2-4DD1-99DC-58DF5B47731A', 'Ex Machina', '19.355.765/0001-72'),
 ('2D943A27-5194-4CB5-9F67-C078DFAF0A03', 'Planeta dos Livros', '05.764.236/0001-18'),
@@ -87,7 +93,7 @@ INSERT INTO editora VALUES
 ('FE8AC43F-2B86-4E8F-896D-E7A3678CC210', 'Novo Conceito', '08.561.869/0001-17'),
 ('4E675FF1-264D-4694-8AC8-BC74CE2F3F56', 'Companhia das Letras', '55.789.390/0008-99');
 
-INSERT INTO obra VALUES 
+INSERT INTO obra (id, titulo, isbn, genero, idautor, ideditora) VALUES 
 ('F3C8F600-27B5-412D-B8FB-784850E248BF', 'Contos Reunidos do Mestre do Horror Cosmico', '978-85-67773-10-0', 'horror cosmico', '6FFED3CA-6D5A-4060-BA72-C1855ED49922', '2D95A6B8-32C2-4DD1-99DC-58DF5B47731A'),
 ('A35DFABE-6BB8-4A3D-B2B5-21D69295EBF2', 'Edgar Allan Poe - Medo Classico', '978-85-94540-24-9', 'horror', '2C522697-BC20-4FC2-AC7C-37A590ECDE01', '51B72101-DA30-4D8C-9C63-BEB5F13D0228'),
 ('9025D64F-7D1F-4A2F-B2B2-9446A3D379B5', 'H.P. Lovecraft - Medo Classico - Vol. 1', '978-85-94540-78-2', 'horror cosmico', '6FFED3CA-6D5A-4060-BA72-C1855ED49922', '51B72101-DA30-4D8C-9C63-BEB5F13D0228'),
@@ -99,7 +105,7 @@ INSERT INTO obra VALUES
 ('DC58904F-D20D-4AB3-81A8-95DF811C4F83', 'A Menina Mais Fria de Coldtown', '978-85-81634-03-6', 'romance', '8A2529E8-73D9-4595-BEE7-AF2B288E148E', 'FE8AC43F-2B86-4E8F-896D-E7A3678CC210'),
 ('60004347-3C4F-4FE1-8168-1F3555C59871', 'Pode Beijar a Noiva', '978-85-42206-76-0', 'romance', '4641F492-BEB2-472B-9BA7-93FA1DD8DF96', '2D943A27-5194-4CB5-9F67-C078DFAF0A03');
 
-INSERT INTO livro VALUES 
+INSERT INTO livro (id, barcode, idobra, doacao) VALUES 
 ('7CC08B9B-E196-4E11-9A91-DAEA49D56E11', null, 'F3C8F600-27B5-412D-B8FB-784850E248BF', '2021-06-06 19:50:26.000'), 
 ('0F135EE7-DED9-4AC6-A952-030469F46F5D', null, 'F3C8F600-27B5-412D-B8FB-784850E248BF', '2021-06-06 19:50:26.000'), 
 ('EE4304D0-33F4-462B-9D1F-4EEEED4BA45C', null, 'F3C8F600-27B5-412D-B8FB-784850E248BF', '2021-06-06 19:50:26.000'), 
@@ -141,11 +147,11 @@ INSERT INTO livro VALUES
 ('CDD60083-CC41-4127-A00C-EDDCB6BAC676', null, '9025D64F-7D1F-4A2F-B2B2-9446A3D379B5', '2021-06-06 19:50:26.000'), 
 ('14689EE1-FCD5-4A00-825B-4474D0D6769A', null, '9025D64F-7D1F-4A2F-B2B2-9446A3D379B5', '2021-06-06 19:50:26.000'); 
 
-INSERT INTO locatario VALUES 
+INSERT INTO locatario (id, nome, cpf, email, nascimento, telefone) VALUES 
 ('6FE9F684-E850-468F-8D2A-06F73AA7B55F', 'Pedro Cabral', '431.711.978-12', 'phcs93@gmail.com', '1993-09-24', '5513997981407'),
 ('AFB2FA1F-6F8A-4521-B6F1-2C0CFA743E62', 'Roberto Pinho', '415.285.008-76', 'ropinho@gmail.com', '1965-07-21', NULL);
 
-INSERT INTO usuario VALUES 
+INSERT INTO usuario (id, nome, cpf, login, senha, nascimento) VALUES 
 ('3976EE66-EBB4-4A7A-AAFA-58E3241E0EF7', 'Maria Leitao', '465.083.078-86', 'mgleitao', '19960215', '1996-02-15');
 
 INSERT INTO movimentacao VALUES 
