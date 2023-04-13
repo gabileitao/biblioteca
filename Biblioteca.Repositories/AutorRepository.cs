@@ -102,22 +102,8 @@ namespace Biblioteca.Repositories {
             return autores.ToArray();
         }
 
-        public bool AuthorExists(Guid id) {
-
-            SqlConnection connection = new SqlConnection(ConnectionString);
-            connection.Open();
-
-            string query = $"select count(*) from autor where id = '{id}' and ativo = 1";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            int count = (int)command.ExecuteScalar(); //retorna a primera linha da primeira coluna
-            return count > 0;
-        }
-
         //Post - inserir dados
-
-        public Autor AddAuthor(Autor autor) {
+        public Autor Add(Autor autor) {
 
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
@@ -131,12 +117,13 @@ namespace Biblioteca.Repositories {
             SqlCommand command = new SqlCommand(query, connection);
 
             int affectedLines = command.ExecuteNonQuery();
+            connection.Close();
 
             return autor;
         }
 
         //Put - atualizar dados
-        public Autor AttAuthor(Autor autor) {
+        public Autor Att(Autor autor) {
 
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
@@ -149,11 +136,12 @@ namespace Biblioteca.Repositories {
 
             SqlCommand command = new SqlCommand(query, connection);
             int affectedLines = command.ExecuteNonQuery();
+            connection.Close();
 
             return autor;
         }
 
-        public Autor RemoveAuthor(Autor autor) {
+        public Autor Remove(Autor autor) {
 
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
@@ -162,8 +150,24 @@ namespace Biblioteca.Repositories {
 
             SqlCommand command = new SqlCommand(query, connection);
             int affectedLines = command.ExecuteNonQuery();
+            connection.Close();
 
             return autor;
+        }
+
+        public bool Exists(Guid id) {
+
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+
+            string query = $"select count(*) from autor where id = '{id}' and ativo = 1";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            int count = (int)command.ExecuteScalar(); //só serve para usar com Select e retorna só a primera linha da primeira coluna
+            connection.Close();
+
+            return count > 0;
         }
 
     }

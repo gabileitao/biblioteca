@@ -19,8 +19,13 @@ namespace Biblioteca.Api.Controllers {
         }
 
         [HttpGet, Route("autor")]
-        public IHttpActionResult GetAuthor([FromUri] string name) {
+        public IHttpActionResult GetAuthorPerName([FromUri] string name) {
             return Ok(AutorService.FindPerName(name));
+        }
+
+        [HttpGet, Route("autor")]
+        public IHttpActionResult GetPerId(Guid id) {
+            return Ok(AutorService.FindPerId(id));
         }
 
         [HttpPost, Route("autor")]
@@ -29,8 +34,8 @@ namespace Biblioteca.Api.Controllers {
             try {
                 var erros = AutorService.IsValidAuthor(autor);
                 if (erros.Length == 0) {
-                    if (!AutorService.AuthorExists(autor.Id)) {
-                        AutorService.AddAuthor(autor);
+                    if (!AutorService.Exists(autor.Id)) {
+                        AutorService.Add(autor);
                         return Ok(autor);
                     } else {
                         return BadRequest("Autor já existe com esse id");
@@ -50,8 +55,8 @@ namespace Biblioteca.Api.Controllers {
             try {
                 var erros = AutorService.IsValidAuthor(autor);
                 if (erros.Length == 0) {
-                    if (AutorService.AuthorExists(autor.Id)) {
-                        AutorService.AttAuthor(autor);
+                    if (AutorService.Exists(autor.Id)) {
+                        AutorService.Att(autor);
                         return Ok(autor);
                     } else {
                         return NotFound();
@@ -69,8 +74,8 @@ namespace Biblioteca.Api.Controllers {
         public IHttpActionResult DeleteAuthor([FromBody] Autor autor) {
 
             try {
-                if (AutorService.AuthorExists(autor.Id)) {
-                    AutorService.DeleteAuthor(autor);
+                if (AutorService.Exists(autor.Id)) {
+                    AutorService.Delete(autor);
                     return Ok(autor);
                 } else {
                     return NotFound();

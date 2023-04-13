@@ -25,24 +25,19 @@ namespace Biblioteca.Services {
             return AutorRepository.FindPerId(id);
         }
 
-        public bool AuthorExists(Guid id) {
+        public Autor Add(Autor autor) {
 
-            return AutorRepository.AuthorExists(id);
+            return AutorRepository.Add(autor); ;
         }
 
-        public Autor AddAuthor(Autor autor) {
+        public Autor Att(Autor autor) {
 
-            return AutorRepository.AddAuthor(autor); ;
+            return AutorRepository.Att(autor);
         }
 
-        public Autor AttAuthor(Autor autor) {
+        public Autor Delete(Autor autor) {
 
-            return AutorRepository.AttAuthor(autor);
-        }
-
-        public Autor DeleteAuthor(Autor autor) {
-
-            return AutorRepository.RemoveAuthor(autor);
+            return AutorRepository.Remove(autor);
         }
 
         public string[] IsValidAuthor(Autor autor) {
@@ -62,6 +57,11 @@ namespace Biblioteca.Services {
 
             return erros.ToArray();
 
+        }
+
+        public bool Exists(Guid id) {
+
+            return AutorRepository.Exists(id);
         }
 
     }
