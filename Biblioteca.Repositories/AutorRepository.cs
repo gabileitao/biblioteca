@@ -123,7 +123,7 @@ namespace Biblioteca.Repositories {
         }
 
         //Put - atualizar dados
-        public Autor Att(Autor autor) {
+        public Autor Att(Autor autor)  {
 
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
