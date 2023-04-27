@@ -29,6 +29,31 @@
 					"response": []
 				},
 				{
+					"name": "FindPerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/autor?id=2c522697-bc20-4fc2-ac7c-37a590ecde01",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"autor"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2c522697-bc20-4fc2-ac7c-37a590ecde01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "FindPerName",
 					"request": {
 						"method": "GET",
@@ -132,6 +157,638 @@
 							"port": "44383",
 							"path": [
 								"autor"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "editora",
+			"item": [
+				{
+					"name": "FindAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/editora",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"editora"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPerName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/editora?name=ex",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"editora"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "ex"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/editora?id=51b72101-da30-4d8c-9c63-beb5f13d0228",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"editora"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "51b72101-da30-4d8c-9c63-beb5f13d0228"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddEditora",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Nome\": \"Arqueiro\",\r\n    \"CNPJ\": \"06.985.027/0005-90\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/editora",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"editora"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AttEditora",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"2d95a6b8-32c2-4dd1-99dc-58df5b47731a\",\r\n    \"Nome\": \"ExMachina\",\r\n    \"CNPJ\": \"19.355.765/0001-72\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/editora",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"editora"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteEditora",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"e29a1bba-9400-4cd3-a8ff-b83aaf3efc45\",\r\n    \"Nome\": \"Arqueiro\",\r\n    \"CNPJ\": \"06.985.027/0005-90\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/editora",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"editora"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "obra",
+			"item": [
+				{
+					"name": "FindAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/obra",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"obra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPerTitle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/obra?title=edgar",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"obra"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "edgar"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/obra?id=9d87697f-a22b-4d04-9e7f-9dc83e2c599b",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"obra"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "9d87697f-a22b-4d04-9e7f-9dc83e2c599b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddObra",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Titulo\": \"A Cidade Fantasma\",\r\n    \"Isbn\": \"978-65-5587-205-7\",\r\n    \"Genero\": \"dark fantasy\",\r\n    \"Idautor\": \"458459cf-a79c-49b0-a33e-ef89cf62045f\",\r\n    \"Ideditora\": \"4e675ff1-264d-4694-8ac8-bc74ce2f3f56\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/obra",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"obra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AttObra",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"Id\": \"60004347-3c4f-4fe1-8168-1f3555c59871\",\r\n        \"Titulo\": \"Pode Beijar a Noiva\",\r\n        \"Isbn\": \"978-85-42206-76-0\",\r\n        \"Genero\": \"romance\",\r\n        \"Idautor\": \"4641f492-beb2-472b-9ba7-93fa1dd8df96\",\r\n        \"Ideditora\": \"2d943a27-5194-4cb5-9f67-c078dfaf0a03\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/obra",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"obra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteObra",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"3e23c917-2472-4c3f-9e61-67e36ba69712\",\r\n    \"Titulo\": \"A Cidade Fantasma\",\r\n    \"Isbn\": \"978-65-5587-205-7\",\r\n    \"Genero\": \"dark fantasy\",\r\n    \"Idautor\": \"458459cf-a79c-49b0-a33e-ef89cf62045f\",\r\n    \"Ideditora\": \"4e675ff1-264d-4694-8ac8-bc74ce2f3f56\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/obra",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"obra"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "usuario",
+			"item": [
+				{
+					"name": "FindAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/usuario",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/usuario?id:=3976ee66-ebb4-4a7a-aafa-58e3241e0ef7",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"usuario"
+							],
+							"query": [
+								{
+									"key": "id:",
+									"value": "3976ee66-ebb4-4a7a-aafa-58e3241e0ef7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPerName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/usuario?name=ria",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"usuario"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "ria"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Nome\": \"Seu Fulano da Silva\",\r\n    \"Cpf\": \"123.456.789-01\",\r\n    \"Login\": \"fuldva\",\r\n    \"Senha\": \"20200613\",\r\n    \"Nascimento\": \"1965-08-22T00:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/usuario",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AttUsuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"e01de560-5655-41b6-a907-1314b9e21b88\",\r\n    \"Nome\": \"Seu Fulano da Silva\",\r\n    \"Cpf\": \"123.456.789-01\",\r\n    \"Login\": \"fuldsilva\",\r\n    \"Senha\": \"20200613\",\r\n    \"Nascimento\": \"1965-08-22T00:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/usuario",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUsuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"e01de560-5655-41b6-a907-1314b9e21b88\",\r\n    \"Nome\": \"Seu Fulano da Silva\",\r\n    \"Cpf\": \"123.456.789-01\",\r\n    \"Login\": \"fuldsilva\",\r\n    \"Senha\": \"20200613\",\r\n    \"Nascimento\": \"1965-08-22T00:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/usuario",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "locatario",
+			"item": [
+				{
+					"name": "FindAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/locatario",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"locatario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/locatario?id=6fe9f684-e850-468f-8d2a-06f73aa7b55f",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"locatario"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6fe9f684-e850-468f-8d2a-06f73aa7b55f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPerName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/locatario?name=pi",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"locatario"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "pi"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddLocatario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Nome\": \"Hayssa Show\",\r\n    \"Cpf\": \"123.456.789-01\",\r\n    \"Email\": \"showhay@gmail.com\",\r\n    \"Nascimento\": \"1994-11-15T00:00:00\",\r\n    \"Telefone\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/locatario",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"locatario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AttLocatario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"1eee41bf-a44f-41b1-9aa4-0a0ee773f43d\",\r\n    \"Nome\": \"Hayssa Show\",\r\n    \"Cpf\": \"123.456.789-01\",\r\n    \"Email\": \"showhay@gmail.com\",\r\n    \"Nascimento\": \"1994-11-15T00:00:00\",\r\n    \"Telefone\": \"15933333333\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/locatario",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"locatario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteLocatario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"1eee41bf-a44f-41b1-9aa4-0a0ee773f43d\",\r\n    \"Nome\": \"Hayssa Show\",\r\n    \"Cpf\": \"123.456.789-01\",\r\n    \"Email\": \"showhay@gmail.com\",\r\n    \"Nascimento\": \"1994-11-15T00:00:00\",\r\n    \"Telefone\": \"15933333333\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/locatario",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"locatario"
 							]
 						}
 					},
