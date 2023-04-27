@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Autor.cs" />
     <Compile Include="Editora.cs" />
+    <Compile Include="Locatario.cs" />
+    <Compile Include="Usuario.cs" />
     <Compile Include="Obra.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

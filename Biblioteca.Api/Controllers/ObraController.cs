@@ -67,7 +67,7 @@ namespace Biblioteca.Api.Controllers {
                 }
 
             } catch (Exception e) {
-                return InternalServerError();
+                return InternalServerError(e);
             }
         }
 
