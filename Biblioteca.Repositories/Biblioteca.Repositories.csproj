@@ -45,6 +45,7 @@
     <Compile Include="AutorRepository.cs" />
     <Compile Include="EditoraRepository.cs" />
     <Compile Include="LocatarioRepository.cs" />
+    <Compile Include="LivroRepository .cs" />
     <Compile Include="UsuarioRepository.cs" />
     <Compile Include="ObraRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

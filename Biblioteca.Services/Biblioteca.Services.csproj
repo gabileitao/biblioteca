@@ -44,6 +44,7 @@
     <Compile Include="AutorService.cs" />
     <Compile Include="EditoraService.cs" />
     <Compile Include="LocatarioService.cs" />
+    <Compile Include="LivroService.cs" />
     <Compile Include="UsuarioService.cs" />
     <Compile Include="ObraService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

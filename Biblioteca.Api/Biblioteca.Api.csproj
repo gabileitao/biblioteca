@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\LocatarioController.cs" />
+    <Compile Include="Controllers\LivroController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ObraController.cs" />
     <Compile Include="Controllers\EditoraController.cs" />
