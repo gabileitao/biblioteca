@@ -96,9 +96,8 @@ namespace Biblioteca.Repositories {
             connection.Open();
 
             livro.Id = Guid.NewGuid();
-            livro.Doacao = DateTime.Now;
 
-            string query = $"insert into obra values ('{livro.Id}', '{livro.Barcode}', '{livro.Idobra}', '{livro.Doacao}', 1)";
+            string query = $"insert into livro values ('{livro.Id}', '{livro.Barcode}', '{livro.Idobra}', '{livro.Doacao}', 1)";
 
             SqlCommand command = new SqlCommand(query, connection);
             int affectedLines = command.ExecuteNonQuery();
@@ -112,9 +111,7 @@ namespace Biblioteca.Repositories {
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
 
-            string query = $"update livro set barcode = '{livro.Barcode}', " +
-                $"idobra = '{livro.Idobra}', doacao = '{livro.Doacao}', " +
-                $"where id = '{livro.Id}'";
+            string query = $"update livro set barcode = '{livro.Barcode}', idobra = '{livro.Idobra}', doacao = '{livro.Doacao}' where id = '{livro.Id}'";
 
             SqlCommand command = new SqlCommand(query, connection);
             int affectedLines = command.ExecuteNonQuery();

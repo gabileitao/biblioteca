@@ -11,7 +11,7 @@ namespace Biblioteca.Domain {
         public Guid Id;
         public string Barcode;
         public Guid Idobra;
-        public DateTime Doacao;
+        public DateTime? Doacao;
 
     }
 }

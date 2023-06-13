@@ -24,6 +24,12 @@ namespace Biblioteca.Services {
         }
 
         public Livro Add(Livro livro) {
+            //livro.Doacao = livro.Doacao == null ? livro.Doacao = DateTime.Now;
+
+            if(livro.Doacao == null) {
+                livro.Doacao = DateTime.Now;
+            }
+                        
             return LivroRepository.Add(livro);
         }
 

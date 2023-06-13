@@ -481,6 +481,164 @@
 			]
 		},
 		{
+			"name": "livro",
+			"item": [
+				{
+					"name": "FindAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/livro",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"livro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPerBarcode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/livro?barcode=122",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"livro"
+							],
+							"query": [
+								{
+									"key": "barcode",
+									"value": "122"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/livro?id=0f135ee7-ded9-4ac6-a952-030469f46f5d",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"livro"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "0f135ee7-ded9-4ac6-a952-030469f46f5d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddLivro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Barcode\": \"8949461894984\",\r\n    \"Idobra\": \"60004347-3c4f-4fe1-8168-1f3555c59871\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/livro",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"livro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AttLivro",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"0f135ee7-ded9-4ac6-a952-030469f46f5d\",\r\n    \"Barcode\": \"77777777\",\r\n    \"Idobra\": \"f3c8f600-27b5-412d-b8fb-784850e248bf\",\r\n    \"Doacao\": \"2021-06-06T19:50:26\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/livro",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"livro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteLivro",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"0f135ee7-ded9-4ac6-a952-030469f46f5d\",\r\n    \"Barcode\": \"77777777\",\r\n    \"Idobra\": \"f3c8f600-27b5-412d-b8fb-784850e248bf\",\r\n    \"Doacao\": \"2021-06-06T19:50:26\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/livro",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"livro"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "usuario",
 			"item": [
 				{
