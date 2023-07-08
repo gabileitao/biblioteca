@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="AutorRepository.cs" />
     <Compile Include="EditoraRepository.cs" />
+    <Compile Include="MovimentacaoRepository.cs" />
     <Compile Include="LocatarioRepository.cs" />
     <Compile Include="LivroRepository .cs" />
     <Compile Include="UsuarioRepository.cs" />

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AutorService.cs" />
     <Compile Include="EditoraService.cs" />
+    <Compile Include="MovimentacaoService.cs" />
     <Compile Include="LocatarioService.cs" />
     <Compile Include="LivroService.cs" />
     <Compile Include="UsuarioService.cs" />

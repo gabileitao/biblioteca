@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Autor.cs" />
     <Compile Include="Editora.cs" />
+    <Compile Include="Movimentacao.cs" />
     <Compile Include="Locatario.cs" />
     <Compile Include="Livro.cs" />
     <Compile Include="Usuario.cs" />
