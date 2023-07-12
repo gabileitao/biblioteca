@@ -953,6 +953,133 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "movimentacao",
+			"item": [
+				{
+					"name": "FindAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/movimentacao",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"movimentacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/movimentacao?id=a6518572-2e5d-405c-b39b-a66cf28eb6e2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"movimentacao"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "a6518572-2e5d-405c-b39b-a66cf28eb6e2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPerDate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/movimentacao?date=2021-06-06",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"movimentacao"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2021-06-06"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindBookStatus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44383/movimentacao?idlivro=99e9a81f-6f4a-48ef-ba41-1963263aeb07",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"movimentacao"
+							],
+							"query": [
+								{
+									"key": "idlivro",
+									"value": "99e9a81f-6f4a-48ef-ba41-1963263aeb07"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddMovimentacao",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"Idlivro\": \"2a323e5a-6759-4de7-8989-0bf3a2f491ff\",\r\n    \"Idlocatario\": \"afb2fa1f-6f8a-4521-b6f1-2c0cfa743e62\",\r\n    \"Idusuario\": \"3976ee66-ebb4-4a7a-aafa-58e3241e0ef7\",\r\n    \"Tipo\": \"D\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44383/movimentacao",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44383",
+							"path": [
+								"movimentacao"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

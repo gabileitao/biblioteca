@@ -19,7 +19,7 @@ namespace Biblioteca.Repositories {
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
 
-            string query = "select * from movimentacao where ativo = 1";
+            string query = "select * from movimentacao";
 
             SqlCommand command = new SqlCommand(query, connection);
             
@@ -28,10 +28,12 @@ namespace Biblioteca.Repositories {
 
             while (reader.Read()) {
                 Movimentacao movimentacao = new Movimentacao();
-                movimentacao.Datamovimentacao = reader.GetDateTime(0);
-                movimentacao.Idlivro = reader.GetGuid(1);
-                movimentacao.Idlocatario = reader.GetGuid(2);
-                movimentacao.Idusuario = reader.GetGuid(3);
+                movimentacao.Id = reader.GetGuid(0);
+                movimentacao.Datamovimentacao = reader.GetDateTime(1);
+                movimentacao.Idlivro = reader.GetGuid(2);
+                movimentacao.Idlocatario = reader.GetGuid(3);
+                movimentacao.Idusuario = reader.GetGuid(4);
+                movimentacao.Tipo = reader.GetString(5);
                 movimentacoes.Add(movimentacao);
             }
 
@@ -40,62 +42,103 @@ namespace Biblioteca.Repositories {
             return movimentacoes.ToArray();
         }
 
-        //public Livro[] FindPerBarcode(string barcode) {
+        public Movimentacao[] FindPerDate(DateTime date) {
 
-        //    SqlConnection connection = new SqlConnection(ConnectionString);
-        //    connection.Open();
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
 
-        //    string query = $"select * from livro where barcode like '%{barcode}%' and ativo = 1";
+            string yyyyMMdd = $"{date.Year}-{date.Month}-{date.Day}";
 
-        //    SqlCommand command = new SqlCommand(query, connection);
+            string query = $"select * from movimentacao where datamovimentacao >= '{yyyyMMdd} 00:00:00' and datamovimentacao <= '{yyyyMMdd} 23:59:59'";
 
-        //    SqlDataReader reader = command.ExecuteReader();
-        //    List<Livro> livros = new List<Livro>();
 
-        //    while (reader.Read()) {
-        //        Livro livro = new Livro();
-        //        livro.Id = reader.GetGuid(0);
-        //        livro.Barcode = reader.GetString(1);
-        //        livro.Idobra = reader.GetGuid(2);
-        //        livro.Doacao = reader.GetDateTime(3);
-        //        livros.Add(livro);
-        //    }
+            SqlCommand command = new SqlCommand(query, connection);
 
-        //    connection.Close();
+            SqlDataReader reader = command.ExecuteReader();
+            List<Movimentacao> movimentacoes = new List<Movimentacao>();
 
-        //    return livros.ToArray();
-        //}
+            while (reader.Read()) {
+                Movimentacao movimentacao = new Movimentacao();
+                movimentacao.Id = reader.GetGuid(0);
+                movimentacao.Datamovimentacao = reader.GetDateTime(1);
+                movimentacao.Idlivro = reader.GetGuid(2);
+                movimentacao.Idlocatario = reader.GetGuid(3);
+                movimentacao.Idusuario = reader.GetGuid(4);
+                movimentacao.Tipo = reader.GetString(5);
+                movimentacoes.Add(movimentacao);
+            }
 
-        //public Livro[] FindPerId(Guid id) {
-        //    SqlConnection connection = new SqlConnection(ConnectionString);
-        //    connection.Open();
+            connection.Close();
 
-        //    string query = $"select * from livro where id = '{id}' and ativo = 1 ";
+            return movimentacoes.ToArray();
+        }
 
-        //    SqlCommand command = new SqlCommand(query, connection);
 
-        //    SqlDataReader reader = command.ExecuteReader();
-        //    List<Livro> livros = new List<Livro>();
+        public Movimentacao[] FindPerId(Guid id) {
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
 
-        //    while (reader.Read()) {
-        //        Livro livro = new Livro();
-        //        livro.Id = reader.GetGuid(0);
-        //        livro.Barcode = reader.GetString(1);
-        //        livro.Idobra = reader.GetGuid(2);
-        //        livro.Doacao = reader.GetDateTime(3);
-        //        livros.Add(livro);
-        //    }
+            string query = $"select * from movimentacao where id = '{id}'";
 
-        //    connection.Close();
+            SqlCommand command = new SqlCommand(query, connection);
 
-        //    return livros.ToArray();
-        //}
+            SqlDataReader reader = command.ExecuteReader();
+            List<Movimentacao> movimentacoes = new List<Movimentacao>();
+
+            while (reader.Read()) {
+                Movimentacao movimentacao = new Movimentacao();
+                movimentacao.Id = reader.GetGuid(0);
+                movimentacao.Datamovimentacao = reader.GetDateTime(1);
+                movimentacao.Idlivro = reader.GetGuid(2);
+                movimentacao.Idlocatario = reader.GetGuid(3);
+                movimentacao.Idusuario = reader.GetGuid(4);
+                movimentacao.Tipo = reader.GetString(5);
+                movimentacoes.Add(movimentacao);
+            }
+
+            connection.Close();
+
+            return movimentacoes.ToArray();
+        }
+
+
+        public Movimentacao[] FindBookStatus(Guid idlivro) {
+
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+
+            string query = $"select * from movimentacao where idlivro = '{idlivro}' order by datamovimentacao desc";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            SqlDataReader reader = command.ExecuteReader();
+            List<Movimentacao> movimentacoes = new List<Movimentacao>();
+
+            while (reader.Read()) {
+                Movimentacao movimentacao = new Movimentacao();
+                movimentacao.Id = reader.GetGuid(0);
+                movimentacao.Datamovimentacao = reader.GetDateTime(1);
+                movimentacao.Idlivro = reader.GetGuid(2);
+                movimentacao.Idlocatario = reader.GetGuid(3);
+                movimentacao.Idusuario = reader.GetGuid(4);
+                movimentacao.Tipo = reader.GetString(5);
+                movimentacoes.Add(movimentacao);
+            }
+
+            connection.Close();
+
+            return movimentacoes.ToArray();
+
+        }
 
         public Movimentacao Add(Movimentacao movimentacao) {
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
 
-            string query = $"insert into movimentacao values ('{movimentacao.Datamovimentacao}', '{movimentacao.Idlivro}', '{movimentacao.Idlocatario}', '{movimentacao.Idusuario}', 1)";
+            movimentacao.Id = Guid.NewGuid();
+
+            string query = $"insert into movimentacao values ('{movimentacao.Id}','{movimentacao.Datamovimentacao}', " +
+                $"'{movimentacao.Idlivro}', '{movimentacao.Idlocatario}', '{movimentacao.Idusuario}', '{movimentacao.Tipo}')";
 
             SqlCommand command = new SqlCommand(query, connection);
             int affectedLines = command.ExecuteNonQuery();
@@ -104,61 +147,33 @@ namespace Biblioteca.Repositories {
             return movimentacao;
         }
 
-        public Livro Att(Livro livro) {
-
+        public bool Exists(Guid id) {
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
 
-            string query = $"update livro set barcode = '{livro.Barcode}', idobra = '{livro.Idobra}', doacao = '{livro.Doacao}' where id = '{livro.Id}'";
+            string query = $"select count(*) from movimentacao where id = '{id}'";
 
             SqlCommand command = new SqlCommand(query, connection);
-            int affectedLines = command.ExecuteNonQuery();
+
+            int count = (int)command.ExecuteScalar();
             connection.Close();
 
-            return livro;
+            return count > 0;
         }
 
-        public Livro Remove(Livro livro) {
-
+        public bool ExistsMov(Guid idlivro) {
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
 
-            string query = $"update livro set ativo = 0 where id = '{livro.Id}'";
+            string query = $"select count(*) from movimentacao where idlivro = '{idlivro}'";
 
             SqlCommand command = new SqlCommand(query, connection);
-            int affectedLines = command.ExecuteNonQuery();
+
+            int count = (int)command.ExecuteScalar();
             connection.Close();
 
-            return livro;
+            return count > 0;
         }
-
-        //public bool Exists(string barcode) {
-        //    SqlConnection connection = new SqlConnection(ConnectionString);
-        //    connection.Open();
-
-        //    string query = $"select count(*) from livro where barcode = '{barcode}' and ativo = 1";
-
-        //    SqlCommand command = new SqlCommand(query, connection);
-
-        //    int count = (int)command.ExecuteScalar();
-        //    connection.Close();
-
-        //    return count > 0;
-        //}
-
-        //public bool Exists(Guid id) {
-        //    SqlConnection connection = new SqlConnection(ConnectionString);
-        //    connection.Open();
-
-        //    string query = $"select count(*) from livro where id = '{id}' and ativo = 1";
-
-        //    SqlCommand command = new SqlCommand(query, connection);
-
-        //    int count = (int)command.ExecuteScalar();
-        //    connection.Close();
-
-        //    return count > 0;
-        //}
 
     }
 }

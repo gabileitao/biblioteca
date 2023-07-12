@@ -15,13 +15,17 @@ namespace Biblioteca.Services {
             return MovimentacaoRepository.FindAll();
         }
 
-        //public Livro[] FindPerBarcode(string barcode) {
-        //    return MovimentacaoRepository.FindPerBarcode(barcode);
-        //}
+        public Movimentacao[] FindPerDate(DateTime date) {
+            return MovimentacaoRepository.FindPerDate(date);
+        }
 
-        //public Livro[] FindPerId(Guid id) {
-        //    return MovimentacaoRepository.FindPerId(id);
-        //}
+        public Movimentacao[] FindPerId(Guid id) {
+            return MovimentacaoRepository.FindPerId(id);
+        }
+
+        public Movimentacao[] FindBookStatus(Guid idlivro) {
+            return MovimentacaoRepository.FindBookStatus(idlivro);
+        }
 
         public Movimentacao Add(Movimentacao movimentacao) {
           
@@ -32,19 +36,11 @@ namespace Biblioteca.Services {
             return MovimentacaoRepository.Add(movimentacao);
         }
 
-        public Livro Att(Livro livro) {
-            return LivroRepository.Att(livro);
-        }
-
-        public Livro Remove(Livro livro) {
-            return LivroRepository.Remove(livro);
-        }
-
         public string[] IsValid(Movimentacao movimentacao) {
             var erros = new List<string>();
 
             if (movimentacao.Idlivro == null || movimentacao.Idlivro == Guid.Empty) {
-                erros.Add("É necessário inserir um livro.");
+                erros.Add("É necessário inserir um id válido.");
             }
 
             if (movimentacao.Idlocatario == null || movimentacao.Idlocatario == Guid.Empty) {
@@ -58,12 +54,13 @@ namespace Biblioteca.Services {
             return erros.ToArray();
         }
 
-        //public bool Exists(Guid id) {
-        //    return LivroRepository.Exists(id);
-        //}
+        public bool Exists(Guid id) {
+            return MovimentacaoRepository.Exists(id);
+        }
 
-        //public bool Exists(string barcode) {
-        //    return LivroRepository.Exists(barcode);
-        //}
+        public bool ExistsMov(Guid idlivro) {
+            return MovimentacaoRepository.ExistsMov(idlivro);
+        }
+
     }
 }

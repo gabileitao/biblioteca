@@ -13,67 +13,56 @@ namespace Biblioteca.Api.Controllers {
     public class MovimentacaoController : ApiController {
 
         public MovimentacaoService MovimentacaoService = new MovimentacaoService();
+        public LocatarioService LocatarioService = new LocatarioService();
+        public LivroService LivroService = new LivroService();
 
         [HttpGet, Route("movimentacao")]
         public IHttpActionResult GetAll() {
             return Ok(MovimentacaoService.FindAll());
         }
 
-        [HttpGet, Route("livro")]
-        public IHttpActionResult GetPerBarcode([FromUri] string barcode) {
-            return Ok(LivroService.FindPerBarcode(barcode));
+        [HttpGet, Route("movimentacao")]
+        public IHttpActionResult GetPerDate([FromUri] DateTime date) {
+            return Ok(MovimentacaoService.FindPerDate(date));
         }
 
-        [HttpGet, Route("livro")]
+        [HttpGet, Route("movimentacao")]
         public IHttpActionResult GetPerId([FromUri] Guid id) {
-            return Ok(LivroService.FindPerId(id));
+            return Ok(MovimentacaoService.FindPerId(id));
         }
 
-        [HttpPost, Route("livro")]
-        public IHttpActionResult PostLivro([FromBody] Movimentacao movimentacao) {
+        [HttpGet, Route("movimentacao")]
+        public IHttpActionResult GetBookStatus([FromUri] Guid idlivro) {
+
+            if (LivroService.Exists(idlivro)) {
+                if (MovimentacaoService.ExistsMov(idlivro)) {
+                    return Ok(MovimentacaoService.FindBookStatus(idlivro));
+                } else {
+                    return BadRequest("Não existem movimentações com essa copia.");
+                }
+            } else {
+                return BadRequest("Copia não existe.");
+            }
+
+        }
+
+        [HttpPost, Route("movimentacao")]
+        public IHttpActionResult PostMovimentacao([FromBody] Movimentacao movimentacao) {
             try {
                 var erros = MovimentacaoService.IsValid(movimentacao);
                 if (erros.Length == 0) {
-                    MovimentacaoService.Add(movimentacao);
-                    return Ok(movimentacao);
-                } else {
-                    return BadRequest(string.Join(", ", erros));
-                }
-            } catch (Exception e) {
-                return InternalServerError(e);
-            }
-        }
-
-        [HttpPut, Route("livro")]
-        public IHttpActionResult PutLivro([FromBody] Livro livro) {
-
-            try {
-
-                var erros = LivroService.IsValid(livro);
-                if (erros.Length == 0) {
-                    if (LivroService.Exists(livro.Id)) {
-                        LivroService.Att(livro);
-                        return Ok(livro);
+                    if (!MovimentacaoService.Exists(movimentacao.Id)) {
+                        if (LocatarioService.Exists(movimentacao.Idlocatario)) {
+                            MovimentacaoService.Add(movimentacao);
+                            return Ok(movimentacao);
+                        } else {
+                            return BadRequest("Locatario não existe.");
+                        }
                     } else {
-                        return NotFound();
+                        return BadRequest("Movimentação já existe com esse Id.");
                     }
                 } else {
                     return BadRequest(string.Join(", ", erros));
-                }
-
-            } catch (Exception e) {
-                return InternalServerError(e);
-            }
-        }
-
-        [HttpDelete, Route("livro")]
-        public IHttpActionResult DeleteLivro([FromBody] Livro livro) {
-            try {
-                if (LivroService.Exists(livro.Id)) {
-                    LivroService.Remove(livro);
-                    return Ok(livro);
-                } else {
-                    return NotFound();
                 }
             } catch (Exception e) {
                 return InternalServerError(e);
