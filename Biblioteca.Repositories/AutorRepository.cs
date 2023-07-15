@@ -25,10 +25,6 @@ namespace Biblioteca.Repositories {
             //conceito de retirada de dados da base e colocar na memória em formato de objeto.
             while (reader.Read()) {
                 Autor autor = new Autor();
-                //autor.Id = reader.GetInt32(0);
-                //autor.Nome = reader.GetString(1);
-                //autor.Nascimento = reader.GetDateTime(2);
-                //autor.Falecimento = reader.GetDateTime(3);
                 autor.Id = reader.GetGuid(reader.GetOrdinal("id"));
                 autor.Nome = reader.GetString(reader.GetOrdinal("nome"));
                 autor.Nascimento = reader.GetDateTime(reader.GetOrdinal("nascimento"));
