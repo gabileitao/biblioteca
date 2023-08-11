@@ -41,14 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Autor.cs" />
-    <Compile Include="Editora.cs" />
-    <Compile Include="Movimentacao.cs" />
-    <Compile Include="Locatario.cs" />
-    <Compile Include="Livro.cs" />
-    <Compile Include="Usuario.cs" />
-    <Compile Include="Obra.cs" />
+    <Compile Include="Models\Autor.cs" />
+    <Compile Include="Models\Editora.cs" />
+    <Compile Include="Models\Movimentacao.cs" />
+    <Compile Include="Models\Locatario.cs" />
+    <Compile Include="Models\Livro.cs" />
+    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\Obra.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Cpf.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -31,6 +31,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{E0C5AAF4-0
 		ScriptBanco.sql = ScriptBanco.sql
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.UnitTest", "0.UnitTest", "{913B6F7A-88E2-4AD5-B00A-C1CA9856A0D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca.Domain.UnitTest", "Biblioteca.Domain.UnitTest\Biblioteca.Domain.UnitTest.csproj", "{E71326E5-43D9-49DA-9DFD-BE8DBFB6AD39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,10 @@ Global
 		{48F2656F-3137-4B6E-B6F2-A6B176839A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48F2656F-3137-4B6E-B6F2-A6B176839A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48F2656F-3137-4B6E-B6F2-A6B176839A63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E71326E5-43D9-49DA-9DFD-BE8DBFB6AD39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E71326E5-43D9-49DA-9DFD-BE8DBFB6AD39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E71326E5-43D9-49DA-9DFD-BE8DBFB6AD39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E71326E5-43D9-49DA-9DFD-BE8DBFB6AD39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +71,7 @@ Global
 		{69024D10-3529-48CB-ACF3-C845ACCAF6E5} = {7CE4A2D5-8BBC-4603-944C-C111270DAFAE}
 		{48F2656F-3137-4B6E-B6F2-A6B176839A63} = {5E539F11-1A48-4DC1-BF02-5BEED23C9B9A}
 		{46518AC6-FFE1-4FCA-A214-9A151DA1F80F} = {3537C29F-291F-433E-A710-F73DB918102B}
+		{E71326E5-43D9-49DA-9DFD-BE8DBFB6AD39} = {913B6F7A-88E2-4AD5-B00A-C1CA9856A0D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C8C3340-914C-41F5-8D17-19E4F783F931}
