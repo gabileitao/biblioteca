@@ -14,7 +14,7 @@ namespace Biblioteca.Domain.UnitTest {
             Assert.IsTrue(result);
 
         }
-        
+
         [TestMethod]
         public void BadFlowInvalidKnownCpf() {
 

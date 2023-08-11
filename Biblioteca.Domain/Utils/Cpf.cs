@@ -10,9 +10,9 @@ namespace Biblioteca.Domain.Utils {
 
         public static bool Validate(string cpf) {
 
-            var regex = new Regex(@"\d{3}.\d{3}.\d{3}.-\d{2}");
+            var regex = new Regex(@"\d{3}.\d{3}.\d{3}-\d{2}");
 
-            //verifica 
+            //verifica se a 
             if (!regex.IsMatch(cpf)) return false;
             if(IsKnownInvalidCpf(cpf)) return false;
 
