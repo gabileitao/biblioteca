@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Biblioteca.Domain;
-using Biblioteca.Domain.Models;
 using Biblioteca.Services;
 
-namespace Biblioteca.Api.Controllers {
+namespace Biblioteca.Api.Controllers
+{
     [EnableCors("*", "*", "*")]
     public class EditoraController : ApiController {
 

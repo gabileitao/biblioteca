@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.Common;
 using System.Data.SqlClient;
 using Biblioteca.Domain.Models;
 
-namespace Biblioteca.Repositories {
+namespace Biblioteca.Repositories
+{
     public class AutorRepository {
 
         public string ConnectionString = ConfigurationManager.AppSettings.Get("ConnectionString");
@@ -70,7 +70,7 @@ namespace Biblioteca.Repositories {
             return autores.ToArray();
         }
 
-        public Autor[] FindPerId(Guid id) {
+        public Autor FindPerId(Guid id) {
 
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
@@ -95,7 +95,15 @@ namespace Biblioteca.Repositories {
 
             connection.Close();
 
-            return autores.ToArray();
+            var autoresArray = autores.ToArray();
+
+
+            if (autoresArray.Length == 1){
+                return autoresArray[0];
+            }
+            else{
+                return null;
+            }
         }
 
         //Post - inserir dados
@@ -137,18 +145,18 @@ namespace Biblioteca.Repositories {
             return autor;
         }
 
-        public Autor Remove(Autor autor) {
+        public bool Remove(Guid autorId) {
 
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
 
-            string query = $"update autor set ativo = 0 where id = '{autor.Id}'";
+            string query = $"update autor set ativo = 0 where id = '{autorId}'";
 
             SqlCommand command = new SqlCommand(query, connection);
             int affectedLines = command.ExecuteNonQuery();
             connection.Close();
 
-            return autor;
+            return affectedLines > 0;
         }
 
         public bool Exists(Guid id) {

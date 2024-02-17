@@ -2,11 +2,9 @@
 using Biblioteca.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Biblioteca.Services {
+namespace Biblioteca.Services
+{
     public class LocatarioService {
 
         public LocatarioRepository LocatarioRepository = new LocatarioRepository();

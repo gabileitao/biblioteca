@@ -1,13 +1,10 @@
 ﻿using Biblioteca.Domain;
-using Biblioteca.Domain.Models;
 using Biblioteca.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Biblioteca.Services {
+namespace Biblioteca.Services
+{
     public class EditoraService{
 
         public EditoraRepository EditoraRepository = new EditoraRepository();

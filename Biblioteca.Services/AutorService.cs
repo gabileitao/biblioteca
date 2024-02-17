@@ -2,11 +2,9 @@
 using Biblioteca.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Biblioteca.Services {
+namespace Biblioteca.Services
+{
     public class AutorService {
 
         public AutorRepository AutorRepository = new AutorRepository();
@@ -20,7 +18,7 @@ namespace Biblioteca.Services {
             return AutorRepository.FindPerName(name);
         }
 
-        public Autor[] FindPerId(Guid id) {
+        public Autor FindPerId(Guid id) {
 
             return AutorRepository.FindPerId(id);
         }
@@ -35,9 +33,9 @@ namespace Biblioteca.Services {
             return AutorRepository.Att(autor);
         }
 
-        public Autor Delete(Autor autor) {
+        public bool Delete(Guid autorId) {
 
-            return AutorRepository.Remove(autor);
+            return AutorRepository.Remove(autorId);
         }
 
         public string[] IsValidAuthor(Autor autor) {

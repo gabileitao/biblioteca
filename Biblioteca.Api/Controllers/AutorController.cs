@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Biblioteca.Domain.Models;
 using Biblioteca.Services;
 
-namespace Biblioteca.Api.Controllers {
+namespace Biblioteca.Api.Controllers
+{
     [EnableCors("*", "*", "*")]
     public class AutorController : ApiController {
 
@@ -71,12 +69,12 @@ namespace Biblioteca.Api.Controllers {
         }
 
         [HttpDelete, Route("autor")]
-        public IHttpActionResult DeleteAuthor([FromBody] Autor autor) {
+        public IHttpActionResult DeleteAuthor([FromUri] Guid id) {
 
             try {
-                if (AutorService.Exists(autor.Id)) {
-                    AutorService.Delete(autor);
-                    return Ok(autor);
+                if (AutorService.Exists(id)) {
+                    var success = AutorService.Delete(id);
+                    return Ok(success);
                 } else {
                     return NotFound();
                 }

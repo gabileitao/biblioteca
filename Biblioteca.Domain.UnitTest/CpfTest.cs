@@ -1,8 +1,7 @@
-using System;
-using Biblioteca.Domain.Models;
 using Biblioteca.Domain.Utils;
 
-namespace Biblioteca.Domain.UnitTest {
+namespace Biblioteca.Domain.UnitTest
+{
     [TestClass]
     public class CpfTest {
         

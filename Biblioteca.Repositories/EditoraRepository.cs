@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
-using Biblioteca.Domain.Models;
 using Biblioteca.Domain;
-using System.Xml.Linq;
 
-namespace Biblioteca.Repositories {
+namespace Biblioteca.Repositories
+{
     public class EditoraRepository {
 
         public string ConnectionString = ConfigurationManager.AppSettings.Get("ConnectionString");
